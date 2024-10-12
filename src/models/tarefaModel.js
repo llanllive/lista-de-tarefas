@@ -9,3 +9,14 @@ exports.adicionarTarefa = (descricao) => {
         });
     });
 };
+
+// Nova função para listar todas as tarefas
+exports.listarTarefas = () => {
+    return new Promise((resolve, reject) => {
+        const query = 'SELECT * FROM tarefas';
+        db.query(query, (err, results) => {
+            if (err) return reject(err);
+            resolve(results);
+        });
+    });
+};

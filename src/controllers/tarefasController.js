@@ -1,4 +1,14 @@
+
 const tarefaModel = require('../models/tarefaModel');
+
+exports.listarTarefas = (req, res) => {
+    tarefaModel.listarTarefas()
+        .then(tarefas => res.json(tarefas))
+        .catch(err => {
+            console.error('Erro ao listar tarefas:', err);
+            res.status(500).json({ status: 'erro', mensagem: 'Erro ao listar tarefas.' });
+        });
+};
 
 exports.adicionarTarefa = (req, res) => {
     const { descricao } = req.body;
@@ -14,3 +24,4 @@ exports.adicionarTarefa = (req, res) => {
             res.status(500).json({ status: 'erro', mensagem: 'Erro ao adicionar tarefa.' });
         });
 };
+
