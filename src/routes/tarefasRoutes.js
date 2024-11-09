@@ -8,5 +8,9 @@ router.get('/', tarefasController.listarTarefas); // Adiciona a rota para listar
 // Rota para adicionar uma nova tarefa
 router.post('/', tarefasController.adicionarTarefa);
 
+// Rota de exclusão de tarefa
+router.delete('/:id', tarefasController.excluirTarefa); 
+
+
 module.exports = router;
 

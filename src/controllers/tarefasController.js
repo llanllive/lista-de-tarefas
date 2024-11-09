@@ -25,3 +25,13 @@ exports.adicionarTarefa = (req, res) => {
         });
 };
 
+exports.excluirTarefa = (req, res) => {
+    const { id } = req.params;
+    tarefaModel.excluirTarefa(id)
+        .then(() => res.status(200).json({ status: 'sucesso' }))
+        .catch(err => {
+            console.error('Erro ao excluir tarefa:', err);
+            res.status(500).json({ status: 'erro', mensagem: 'Erro ao excluir tarefa.' });
+        });
+};
+

@@ -10,13 +10,24 @@ exports.adicionarTarefa = (descricao) => {
     });
 };
 
-// Nova função para listar todas as tarefas
+// função para listar todas as tarefas
 exports.listarTarefas = () => {
     return new Promise((resolve, reject) => {
         const query = 'SELECT * FROM tarefas';
         db.query(query, (err, results) => {
             if (err) return reject(err);
             resolve(results);
+        });
+    });
+};
+
+// Função para excluir uma tarefa
+exports.excluirTarefa = (id) => {
+    return new Promise((resolve, reject) => {
+        const query = 'DELETE FROM tarefas WHERE id = ?';
+        db.query(query, [id], (err, result) => {
+            if (err) return reject(err);
+            resolve(result);
         });
     });
 };
